@@ -1,0 +1,11 @@
+---
+- name: install
+  hosts: all
+  remote_user: root
+  become: yes
+  become_method: sudo
+  roles: 
+  - palkan.nginx
+  - {role: mrwilson.sqlite, sqlite_dir: /var/sqlite}
+  - f500.supervisord
+  - debops.gunicorn
